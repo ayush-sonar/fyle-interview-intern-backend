@@ -24,13 +24,20 @@ def grade_assignment(p, incoming_payload):
     """Grade an assignment"""
     grade_assignment_payload = AssignmentGradeSchema().load(incoming_payload)
 
+    assignment = Assignment.get_by_id(grade_assignment_payload.id)
+    if assignment is None:
+        return APIResponse.respond(data={'error':'FyleError'}, status_code=404)
+    if assignment.teacher_id != p.teacher_id:
+        print('teacher_id:', assignment.teacher_id)
+        print('p.teacher_id:', p.teacher_id)
+        return APIResponse.respond(data={'error':'FyleError'}, status_code=400)
     graded_assignment = Assignment.mark_grade(
         _id=grade_assignment_payload.id,
         grade=grade_assignment_payload.grade,
         auth_principal=p
     )
-    if graded_assignment.teacher_id != p.teacher_id:
-        return APIResponse.respond(data={'error':'FyleError'}, status_code=400)
+    # if graded_assignment.teacher_id != p.teacher_id:
+    #     return APIResponse.respond(data={'error':'FyleError'}, status_code=400)
     db.session.commit()
     graded_assignment_dump = AssignmentSchema().dump(graded_assignment)
     return APIResponse.respond(data=graded_assignment_dump)
