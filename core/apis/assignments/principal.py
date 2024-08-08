@@ -12,7 +12,7 @@ principal_assignments_resources = Blueprint('principal_assignments_resources', _
 @decorators.authenticate_principal
 def list_assignments(p):
     """Returns list of assignments"""
-    all_assignments = Assignment.get_assignments_by_principal("GRADED")
+    all_assignments = Assignment.get_assignments_all()
     all_assignments_dump = AssignmentSchema().dump(all_assignments, many=True)
     return APIResponse.respond(data=all_assignments_dump)
 
