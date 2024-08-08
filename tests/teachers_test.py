@@ -39,8 +39,7 @@ def test_grade_assignment_cross(client, h_teacher_2):
     )
 
     assert response.status_code == 400
-    data = response.json
-
+    data = response.json['data']
     assert data['error'] == 'FyleError'
 
 
@@ -96,6 +95,6 @@ def test_grade_assignment_draft_assignment(client, h_teacher_1):
     )
 
     assert response.status_code == 400
-    data = response.json
+    data = response.json['data']
 
     assert data['error'] == 'FyleError'
