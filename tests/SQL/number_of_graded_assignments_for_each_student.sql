@@ -5,6 +5,6 @@ SELECT
 FROM 
     assignments
 WHERE 
-    grade IS NOT NULL
+    state IS "GRADED"
 GROUP BY 
     student_id;

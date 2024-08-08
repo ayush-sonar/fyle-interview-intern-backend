@@ -75,6 +75,7 @@ def test_get_assignments_in_graded_state_for_each_student():
     # Execute the SQL query compare the result with the expected result
     sql_result = db.session.execute(text(sql)).fetchall()
     for itr, result in enumerate(expected_result):
+        print(result[0], sql_result[itr][0])
         assert result[0] == sql_result[itr][0]
 
 

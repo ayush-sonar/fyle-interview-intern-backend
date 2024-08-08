@@ -26,7 +26,7 @@ def grade_assignment(p, incoming_payload):
     graded_assignment = Assignment.get_by_id(grade_assignment_payload.id)
     
     if graded_assignment.state == "DRAFT":
-        return APIResponse.respond(data={"message":"Cannot grade an assignment in Draft state"})
+        return APIResponse.respond(data={"message":"Cannot grade an assignment in Draft state"},status_code=400)
     
     else:
         graded_assignment = Assignment.mark_grade(
