@@ -25,17 +25,8 @@ Clone the repository to your local machine:
 git clone https://github.com/ayush-sonar/fyle-interview-intern-backend
 cd fyle-interview-intern-backend
 ```
-### Step 2: Convert Line Endings (Windows Only)
 
-If you are using Windows, before building the Docker image, you need to convert the line endings of the `run.sh` file to Unix format. To do this, run the following command in the terminal:
-
-```sh
-dos2unix run.sh
-```
-
-This command ensures that the shell script can be executed correctly within the Docker container.
-
-### Step 3: Build the Docker Image
+### Step 2: Build the Docker Image
 
 Build the Docker image using Docker Compose:
 
@@ -43,7 +34,7 @@ Build the Docker image using Docker Compose:
 docker-compose build
 ```
 
-### Step 4: Run the Docker Container
+### Step 3: Run the Docker Container
 
 Run the Docker container using Docker Compose:
 
@@ -51,7 +42,7 @@ Run the Docker container using Docker Compose:
 docker-compose up
 ```
 
-### Step 5: Access the Application
+### Step 4: Access the Application
 
 Open a web browser and navigate to `http://localhost:7755` to access the Flask application.
 
