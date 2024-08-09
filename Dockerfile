@@ -25,7 +25,7 @@ COPY . .
 # Copy the bash script to the container
 COPY run.sh /run.sh
 
-RUN dos2unix /run.sh
+RUN sed -i 's/\r$//' /run.sh
 
 RUN chmod +x /run.sh
 
