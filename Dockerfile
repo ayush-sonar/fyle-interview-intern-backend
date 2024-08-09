@@ -24,6 +24,9 @@ COPY . .
 
 # Copy the bash script to the container
 COPY run.sh /run.sh
+
+RUN dos2unix /run.sh
+
 RUN chmod +x /run.sh
 
 # Set environment variables
